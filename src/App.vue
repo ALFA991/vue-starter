@@ -1,39 +1,48 @@
 <template>
+
     <div>
-        <h1>Witaj w systemie do zapisów na zajęcia</h1>
+        <h1>Witaj w systemie do logowania  na zajęcia</h1>
 
         <div v-if="authenticatedUsername">
             <h2>Witaj {{ authenticatedUsername }}</h2>
-            <a @click="logMeOut()">Wyloguj</a>
+            <a @click="logOut()">Wyloguj</a>
         </div>
 
         <div v-else>
-            <label>Zaloguj się e-mailem </label>
-            <input type="email" v-model="email">
-            <button @click="logMeIn()">Wchodzę</button>
+          <login-form @login="logMeIn($event)"></login-form>
+
         </div>
 
     </div>
 </template>
 
 <script>
+    import LoginForm from "./LogInForm.vue";
     import "milligram";
 
+
     export default {
+      components: {LoginForm},
+
+
         data() {
             return {
                 authenticatedUsername: '',
-                email: ''
+
             }
         },
         methods: {
-            logMeIn() {
+            logMeIn(username) {
+              this.authenticatedUsername = username;
+            },
+            logIn() {
                 this.authenticatedUsername = this.email;
                 this.email = '';
             },
-            logMeOut() {
+            logOut() {
                 this.authenticatedUsername = '';
             }
+
         }
     }
 </script>
