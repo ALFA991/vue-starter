@@ -8,7 +8,7 @@
         </div>
 
         <div v-else>
-            <label>Zaloguj się e-mailem</label>
+            <label>Zaloguj się e-mailem </label>
             <input type="email" v-model="email">
             <button @click="logMeIn()">Wchodzę</button>
         </div>
