@@ -4,8 +4,7 @@
         <h1>Witaj w systemie do logowania  na zajęcia</h1>
 
         <div v-if="authenticatedUsername">
-            <h2>Witaj {{ authenticatedUsername }}</h2>
-            <a @click="logOut()">Wyloguj</a>
+          <log-out-form @logout="logOut($event)" button-label="Wyjdz"></log-out-form>
         </div>
 
         <div v-else>
@@ -21,11 +20,13 @@
 
 <script>
     import LoginForm from "./LogInForm.vue";
+    import LogoutForm from "./LogOutForm.vue";
     import "milligram";
+    import LogOutForm from "@/LogOutForm";
 
 
     export default {
-      components: {LoginForm},
+      components: {LogOutForm, LoginForm},
 
 
         data() {
